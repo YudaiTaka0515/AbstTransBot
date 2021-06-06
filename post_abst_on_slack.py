@@ -7,7 +7,7 @@ config = load_config()
 day_before_3 = datetime.datetime.today() - datetime.timedelta(days=config['day_before'])
 day_before_3_str = day_before_3.strftime('%Y%m%d')
 
-channel = "#cvpr_abstract"
+channel = config['channel_times']
 
 
 def post_abst_on_slack():

@@ -15,7 +15,7 @@ day_before_3_str = day_before_3.strftime('%Y%m%d')
 def extract_abstract():
     search = arxiv.Search(
         query=config['query_cvpr'],
-        max_results=config['max_resluts'],
+        max_results=config['max_results'],
         sort_by=arxiv.SortCriterion.SubmittedDate
     )
 
@@ -23,7 +23,8 @@ def extract_abstract():
 
     for result in search.get():
         title = result.title
-        abstract = translate_by_deepl(result.summary)
+        print(result.summary.replace('\n', ''))
+        abstract = translate_by_deepl(result.summary.replace('\n', ' '))
         url = result.pdf_url
         date = result.published.strftime('%Y%m%d')
         text = "TITLE :\n{} \nURL\n{} \nDATE :\n{}\nABSTRACT:{}\n".format(title, url, date, abstract)
