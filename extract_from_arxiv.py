@@ -23,12 +23,11 @@ def extract_abstract():
 
     for result in search.get():
         title = result.title
-        print(result.summary.replace('\n', ''))
         abstract = translate_by_deepl(result.summary.replace('\n', ' '))
         url = result.pdf_url
         date = result.published.strftime('%Y%m%d')
-        text = "TITLE :\n{} \nURL\n{} \nDATE :\n{}\nABSTRACT:{}\n".format(title, url, date, abstract)
-        print(text)
+        text = "Title: {} \nURL: {} \nPublished: {}\n```{}```".format(title, url, date, abstract)
+        print(abstract)
         if date == day_before_3_str:
             texts.append(text)
         else:
