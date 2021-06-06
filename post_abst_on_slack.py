@@ -2,9 +2,9 @@
 from slacker import Slacker
 from extract_from_arxiv import *
 import datetime
-import os
 from load_config import load_config
 import sys
+print(sys.getdefaultencoding())
 
 
 def post_abst_on_slack(config):

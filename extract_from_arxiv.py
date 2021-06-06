@@ -22,7 +22,7 @@ def extract_abstract(config):
         url = result.pdf_url
         date = result.published.strftime('%Y%m%d')
         text = "Title: {} \nURL: {} \nPublished: {}\n```{}```".format(title, url, date, abstract)
-        print(abstract)
+        # print(abstract)
         if date == day_before_3_str:
             texts.append(text)
         else:

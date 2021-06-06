@@ -22,7 +22,6 @@ def translate_by_deepl(my_text):
                     # "#target-dummydiv"
                     #"#dl_translator > div.lmt__sides_container > div.lmt__side_container.lmt__side_container--target > div.lmt__textarea_container > div.lmt__translations_as_text > p > button.lmt__translations_as_text__text_btn"
 
-
     '''
     WebDriverの処理がうまくいかなかったら1秒待機して再度WebDriverの処理を行う
     ただ、10回トライしてダメだったらエラーを返して関数処理終
