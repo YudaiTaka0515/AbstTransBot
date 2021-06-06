@@ -1,31 +1,23 @@
 from translate_by_deepl import *
 import pprint
-
 import arxiv
 import pandas as pd
 
-# search = arxiv.Search(
-#     query="cat:cs.CV",
-#     max_results=10,
-#     sort_by=arxiv.SortCriterion.SubmittedDate
-# )
+from load_config import load_config
+config = load_config()
+
 
 import datetime
-day_before_3 = datetime.datetime.today() - datetime.timedelta(days=3)
+day_before_3 = datetime.datetime.today() - datetime.timedelta(days=config['day_before'])
 day_before_3_str = day_before_3.strftime('%Y%m%d')
 
 
 def extract_abstract():
     search = arxiv.Search(
-        query="cat:cs.CV",
-        max_results=1,
+        query=config['query_cvpr'],
+        max_results=config['max_resluts'],
         sort_by=arxiv.SortCriterion.SubmittedDate
     )
-    # search = arxiv.Search(
-    #     query="abs:%22 robot surgery %22",
-    #     max_results=1,
-    #     sort_by=arxiv.SortCriterion.SubmittedDate
-    # )
 
     texts = []
 

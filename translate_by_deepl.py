@@ -1,6 +1,8 @@
 import time
 from selenium import webdriver
 import chromedriver_binary
+from load_config import load_config
+config = load_config()
 
 
 def translate_by_deepl(mytext):
