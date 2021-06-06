@@ -1,14 +1,14 @@
+# coding: utf-8
 import time
 from selenium import webdriver
 import chromedriver_binary
 from load_config import load_config
-config = load_config()
 
 
-def translate_by_deepl(mytext):
-    if mytext =="":
+def translate_by_deepl(my_text):
+    if my_text == "":
         return ""
-    if type(mytext) is not str:
+    if type(my_text) is not str:
         raise   Exception("文字列ではありません")
 
     # DeeLのページのURLとCSS Selector
@@ -49,7 +49,7 @@ def translate_by_deepl(mytext):
     while not f_success:
         # DeepLに英文を送る
         try:
-            driver.find_element_by_css_selector(input_selector).send_keys(mytext)
+            driver.find_element_by_css_selector(input_selector).send_keys(my_text)
             f_success = True
         except Exception  as identifier:
             errCount=errCount+1
@@ -60,7 +60,7 @@ def translate_by_deepl(mytext):
     # フラグ用
     Output_before = ""
     while 1:
-        errCount=0
+        errCount = 0
         f_success=False
         while not f_success:
             # DeepLの出力を取得する

@@ -1,20 +1,15 @@
+# coding: utf-8
 from translate_by_deepl import *
-import pprint
 import arxiv
-import pandas as pd
-
 from load_config import load_config
-config = load_config()
-
-
 import datetime
-day_before_3 = datetime.datetime.today() - datetime.timedelta(days=config['day_before'])
-day_before_3_str = day_before_3.strftime('%Y%m%d')
 
 
-def extract_abstract():
+def extract_abstract(config):
+    day_before_3 = datetime.datetime.today() - datetime.timedelta(days=config['day_before'])
+    day_before_3_str = day_before_3.strftime('%Y%m%d')
     search = arxiv.Search(
-        query=config['query_cvpr'],
+        query=config['query'],
         max_results=config['max_results'],
         sort_by=arxiv.SortCriterion.SubmittedDate
     )
@@ -36,7 +31,9 @@ def extract_abstract():
 
 
 if __name__ == '__main__':
-    extract_abstract()
+    config_file = 'config_test.yml'
+    _config = load_config(config_file)
+    extract_abstract(_config)
 
 
 
