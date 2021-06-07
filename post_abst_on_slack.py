@@ -4,7 +4,7 @@ from extract_from_arxiv import *
 import datetime
 from load_config import load_config
 import sys
-print(sys.getdefaultencoding())
+# print(sys.getdefaultencoding())
 
 
 def post_abst_on_slack(config):
@@ -14,8 +14,9 @@ def post_abst_on_slack(config):
     texts = extract_abstract(config)
 
     if len(texts) == 0:
-        slack.chat.post_message(config['channel'], "No paper published on" + day_before_3_str)
+        slack.chat.post_message(config['channel'], "No paper published on " + day_before_3_str)
     for text in texts:
+        # slack.files.upload(channels=config['channel'], initial_comment=text_split[0], content=text_split[2], title='abstract')
         slack.chat.post_message(config['channel'], text)
 
 

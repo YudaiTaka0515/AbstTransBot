@@ -26,6 +26,7 @@ def extract_abstract(config):
         if date == day_before_3_str:
             texts.append(text)
         else:
+            # texts.append(text)
             break
     return texts
 
