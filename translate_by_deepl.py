@@ -17,11 +17,10 @@ def translate_by_deepl(my_text):
     # セレクタは頻繁に変わるっぽいので，適宜修正する必要あり
     # input_selector = "#dl_translator > div.lmt__text > div.lmt__sides_container > div.lmt__side_container.lmt__side_container--source > div.lmt__textarea_container.halfViewHeight > div > textarea"
     # input_selector = "#dl_translator > div.lmt__sides_container > div.lmt__side_container.lmt__side_container--source > div.lmt__textarea_container > div > textarea"
+    # input_selector = "#dl_translator > div.lmt__text > div.lmt__sides_container > div.lmt__side_container.lmt__side_container--source > div.lmt__textarea_container > div.lmt__inner_textarea_container > textarea"
     input_selector = "#dl_translator > div.lmt__text > div.lmt__sides_container > div.lmt__side_container.lmt__side_container--source > div.lmt__textarea_container > div.lmt__inner_textarea_container > textarea"
-    Output_selector = "#dl_translator > div.lmt__text > div.lmt__sides_container > div.lmt__side_container.lmt__side_container--target > div.lmt__textarea_container.lmt__textarea_container_no_shadow > div.lmt__translations_as_text > p.lmt__translations_as_text__item.lmt__translations_as_text__main_translation > button.lmt__translations_as_text__text_btn"
-                    # "#target-dummydiv"
-                    #"#dl_translator > div.lmt__sides_container > div.lmt__side_container.lmt__side_container--target > div.lmt__textarea_container > div.lmt__translations_as_text > p > button.lmt__translations_as_text__text_btn"
-
+    Output_selector = "#dl_translator > div.lmt__text > div.lmt__sides_container > div.lmt__side_container.lmt__side_container--target > div.lmt__textarea_container.lmt__df-1851_raise_alternatives_placement > div.lmt__inner_textarea_container > textarea"
+    Output_selector = "#dl_translator > div.lmt__text > div.lmt__sides_container > div.lmt__side_container.lmt__side_container--target > div.lmt__textarea_container.lmt__df-1851_raise_alternatives_placement > div.lmt__translations_as_text > p.lmt__translations_as_text__item.lmt__translations_as_text__main_translation > button.lmt__translations_as_text__text_btn"
     '''
     WebDriverの処理がうまくいかなかったら1秒待機して再度WebDriverの処理を行う
     ただ、10回トライしてダメだったらエラーを返して関数処理終
@@ -85,6 +84,8 @@ def translate_by_deepl(my_text):
 
     # chromeを閉じる
     driver.close()
+    Output = Output.replace(' ', 'a')
+    Output = Output.replace('\n', 'b')
 
     # 結果出力
     return Output
